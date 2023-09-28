@@ -26,6 +26,9 @@ public class JWTUtils {
                 .compact();
     }
 
-    
+    public String getUsernameFromJwtToken(String token){
+        return Jwts.parserBuilder().setSigningKey(jwtSecret)
+                .build().parseClaimsJws(token).getBody().getSubject();
+    }
 
 }
