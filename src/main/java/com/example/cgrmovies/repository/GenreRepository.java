@@ -1,6 +1,6 @@
-package repository;
+package com.example.cgrmovies.repository;
 
-import model.Genre;
+import com.example.cgrmovies.model.Genre;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

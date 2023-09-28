@@ -1,6 +1,6 @@
-package security;
+package com.example.cgrmovies.security;
 
-import model.User;
+import com.example.cgrmovies.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

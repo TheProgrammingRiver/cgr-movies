@@ -1,10 +1,10 @@
-package service;
+package com.example.cgrmovies.service;
 
-import exception.InformationNotFoundException;
-import model.User;
+import com.example.cgrmovies.exception.InformationNotFoundException;
+import com.example.cgrmovies.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.UserRepository;
+import com.example.cgrmovies.repository.UserRepository;
 
 import java.util.Optional;
 

@@ -1,12 +1,12 @@
-package security;
+package com.example.cgrmovies.security;
 
-import model.User;
+import com.example.cgrmovies.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import service.UserService;
+import com.example.cgrmovies.service.UserService;
 
 @Service
 public class MyUserDetailsService implements UserDetailsService {
