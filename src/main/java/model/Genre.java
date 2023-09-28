@@ -1,8 +1,11 @@
 package model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -25,6 +28,9 @@ public class Genre {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @OneToMany(mappedBy = "genre", orphanRemoval = true)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Movie> movieList;
     public Genre() {
     }
 

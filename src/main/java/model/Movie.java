@@ -1,15 +1,30 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "movie")
 public class Movie {
 
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
     private String name;
 
+    @Column
     private String description;
 
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "movie_id")
     private Genre genre;
 
+    @Column
     private int rating;
 
 

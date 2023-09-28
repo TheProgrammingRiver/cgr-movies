@@ -23,7 +23,7 @@ public class User {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", orphanRemoval = true)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Genre> genreList;
 
