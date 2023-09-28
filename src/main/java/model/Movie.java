@@ -8,6 +8,10 @@ import javax.persistence.*;
 @Table(name = "movie")
 public class Movie {
 
+    public enum MovieStatus {
+        WATCHED, ON_HOLD, DROPPED, WATCHING, WISHLIST
+    }//TODO-------------------------------------------
+
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +27,10 @@ public class Movie {
     @JsonIgnore
     @JoinColumn(name = "movie_id")
     private Genre genre;
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    private MovieStatus status;
 
     @Column
     private int rating;
@@ -86,6 +94,14 @@ public class Movie {
         this.rating = rating;
     }
 
+    public MovieStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(MovieStatus status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Movie{" +
@@ -93,6 +109,7 @@ public class Movie {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", genre=" + genre +
+                ", status=" + status +
                 ", rating=" + rating +
                 '}';
     }
