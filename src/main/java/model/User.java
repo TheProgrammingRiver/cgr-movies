@@ -59,6 +59,14 @@ public class User {
         this.password = password;
     }
 
+    public List<Genre> getGenreList() {
+        return genreList;
+    }
+
+    public void setGenreList(List<Genre> genreList) {
+        this.genreList = genreList;
+    }
+
     @Override
     public String toString() {
         return "User{" +
