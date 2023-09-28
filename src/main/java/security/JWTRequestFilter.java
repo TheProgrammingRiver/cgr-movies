@@ -17,17 +17,23 @@ import java.io.IOException;
 
 @Component
 public class JWTRequestFilter extends OncePerRequestFilter {
-    private final JWTUtils jwtUtils;
-    private final MyUserDetailsService myUserDetailsService;
+    private JWTUtils jwtUtils;
+    private MyUserDetailsService myUserDetailsService;
 
     /**
      * Injects dependencies to access resources
      * @param jwtUtils
+     */
+    @Autowired
+    public void setJwtUtils(JWTUtils jwtUtils) {
+        this.jwtUtils = jwtUtils;
+    }
+    /**
+     * Injects dependencies to access resources
      * @param myUserDetailsService
      */
     @Autowired
-    public JWTRequestFilter(JWTUtils jwtUtils, MyUserDetailsService myUserDetailsService) {
-        this.jwtUtils = jwtUtils;
+    public void setMyUserDetailsService(MyUserDetailsService myUserDetailsService) {
         this.myUserDetailsService = myUserDetailsService;
     }
 
