@@ -17,6 +17,11 @@ public class JWTUtils {
     @Value("${jwt-expiration-ms}")
     public int jwtExpMS;
 
+    /**
+     * Generates a jwt token based on provided user details
+     * @param myUserDetails
+     * @return jwt token
+     */
     public String generateJwtToken(MyUserDetails myUserDetails){
         return Jwts.builder()
                 .setSubject(myUserDetails.getUsername())
@@ -26,11 +31,21 @@ public class JWTUtils {
                 .compact();
     }
 
+    /**
+     * Gets a user from the jwt token
+     * @param token
+     * @return username
+     */
     public String getUsernameFromJwtToken(String token){
         return Jwts.parserBuilder().setSigningKey(jwtSecret)
                 .build().parseClaimsJws(token).getBody().getSubject();
     }
 
+    /**
+     * Validates the jwt token
+     * @param authToken
+     * @return true if token is valid or false if not
+     */
     public boolean validateJwtToken(String authToken){
         try{
             Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
