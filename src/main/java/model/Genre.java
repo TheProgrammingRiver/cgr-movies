@@ -79,6 +79,14 @@ public class Genre {
         this.user = user;
     }
 
+    public List<Movie> getMovieList() {
+        return movieList;
+    }
+
+    public void setMovieList(List<Movie> movieList) {
+        this.movieList = movieList;
+    }
+
     @Override
     public String toString() {
         return "Genre{" +
