@@ -14,19 +14,17 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 
 
 import java.util.logging.Logger;
-
 @CucumberContextConfiguration
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = CgrMoviesApplication.class)
-public class UserControllerTestDefs {
+public class UserControllerTestDefs  {
+    private final Logger logger = Logger.getLogger(UserControllerTestDefs.class.getName());
     private static final String BASE_URL = "http://localhost:";
-    private static final Logger logger = Logger.getLogger(UserControllerTestDefs.class.getName());
 
     @LocalServerPort
     private static String port;
-    private static Response response;
 
     @When("A registered user logs in")
-    public String aRegisteredUserLogsIn() throws JSONException {
+    public void aRegisteredUserLogsIn() throws JSONException {
         logger.info("Calling: A registered user logs in.");
         RestAssured.baseURI = BASE_URL;
         RequestSpecification request = RestAssured.given();
@@ -34,8 +32,10 @@ public class UserControllerTestDefs {
         JSONObject requestBody = new JSONObject();
         requestBody.put("emailAddress", "example@email.com");
         requestBody.put("password", "password");
-        response = request.body(requestBody.toString()).post(BASE_URL + port + "/api/auth/users/login/");
-        return response.jsonPath().getString("jwt");
+        logger.severe(BASE_URL + port + "/api/auth/users/login");
+        Response response = request.body(requestBody.toString()).post(BASE_URL + port + "/api/auth/users/login");
+        logger.info( response.asString());
+
     }
 
 }
