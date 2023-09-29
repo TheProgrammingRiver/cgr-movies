@@ -1,27 +1,18 @@
 package definitions;
 
-import com.example.cgrmovies.CgrMoviesApplication;
 import io.cucumber.java.en.When;
-import io.cucumber.spring.CucumberContextConfiguration;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.server.LocalServerPort;
 
 
 import java.util.logging.Logger;
-@CucumberContextConfiguration
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = CgrMoviesApplication.class)
-public class UserControllerTestDefs  {
-    private final Logger logger = Logger.getLogger(UserControllerTestDefs.class.getName());
-    private static final String BASE_URL = "http://localhost:";
 
-    @LocalServerPort
-    private static String port;
+public class UserControllerTestDefs  extends SetupTestDefs{
+    private final Logger logger = Logger.getLogger(UserControllerTestDefs.class.getName());
 
     @When("A registered user logs in")
     public void aRegisteredUserLogsIn() throws JSONException {
