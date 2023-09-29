@@ -1,6 +1,8 @@
 package definitions;
 
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.restassured.path.json.JsonPath;
 import org.junit.Assert;
 import org.springframework.http.HttpMethod;
@@ -30,4 +32,20 @@ public class GenreControllerTestDefs extends SetupTestDefs{
             e.printStackTrace();
         }
     }
+
+
+    @When("I view the list of genres")
+    public void iViewTheListOfGenres() {
+        try {
+            ResponseEntity<String> responseEntity = new RestTemplate().exchange(BASE_URL + port + "/api/genres/",
+                    HttpMethod.GET, null, String.class);
+            List<Map<String, String>> genreList = JsonPath.from(String.valueOf(responseEntity.getBody())).get("data");
+            Assert.assertEquals(responseEntity.getStatusCode(), HttpStatus.OK);
+            Assert.assertTrue(genreList.size() > 0);
+        } catch (HttpClientErrorException e){
+            e.printStackTrace();
+        }
+    }
+
+
 }
