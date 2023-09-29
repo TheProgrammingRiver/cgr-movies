@@ -24,6 +24,11 @@ public class UserController {
         this.userService = userService;
     }
 
+    /**
+     * Handles loginRequest 
+     * @param loginRequest
+     * @return
+     */
     @PostMapping(path = "/login/")
     public ResponseEntity<LoginResponse> loginUser(@RequestBody LoginRequest loginRequest) {
         Optional<String>jwtToken = userService.loginUser(loginRequest);
