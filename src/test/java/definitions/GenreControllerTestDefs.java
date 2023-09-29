@@ -4,6 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
 import org.junit.Assert;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,8 @@ import java.util.logging.Logger;
 
 public class GenreControllerTestDefs extends SetupTestDefs{
     private static final Logger log = Logger.getLogger(GenreControllerTestDefs.class.getName());
+
+    private static Response response;
 
     @Given("A list of genres are available")
     public void aListOfGenresAreAvailable() {
@@ -48,4 +51,9 @@ public class GenreControllerTestDefs extends SetupTestDefs{
     }
 
 
+    @Then("I should see the genre list")
+    public void iShouldSeeTheGenreList() {
+        log.info("Calling: I should see the genre list");
+       Assert.assertEquals(200, response.getStatusCode());
+    }
 }
