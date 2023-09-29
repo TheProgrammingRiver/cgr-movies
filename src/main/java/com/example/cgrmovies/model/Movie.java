@@ -1,4 +1,4 @@
-package model;
+package com.example.cgrmovies.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
