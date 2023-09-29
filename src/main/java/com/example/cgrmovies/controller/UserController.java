@@ -25,7 +25,7 @@ public class UserController {
     }
 
     /**
-     * Handles loginRequest 
+     * Handles loginRequest
      * @param loginRequest
      * @return
      */
