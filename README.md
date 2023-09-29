@@ -85,7 +85,7 @@ A Java-based web application designed for users to curate their movie consumptio
 </details>
 
 ### ERD
-![ERD](https://github.com/GabrielleYnara/cgr-movies/blob/main/assets/cgr-movies.png)
+![ERD](https://github.com/GabrielleYnara/cgr-movies/assets/cgr-movies.png)
 
 ## API Endpoints
 | HTTP Methods | Endpoint URL                           | Functionality                           | Access    | 
