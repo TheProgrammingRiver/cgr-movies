@@ -15,7 +15,7 @@ public class UserControllerTestDefs  extends SetupTestDefs{
     private final Logger logger = Logger.getLogger(UserControllerTestDefs.class.getName());
 
     @When("A registered user logs in")
-    public void aRegisteredUserLogsIn() throws JSONException {
+    public String aRegisteredUserLogsIn() throws JSONException {
         logger.info("Calling: A registered user logs in.");
         RestAssured.baseURI = BASE_URL;
         RequestSpecification request = RestAssured.given();
@@ -23,10 +23,10 @@ public class UserControllerTestDefs  extends SetupTestDefs{
         JSONObject requestBody = new JSONObject();
         requestBody.put("emailAddress", "example@email.com");
         requestBody.put("password", "password");
-        logger.severe(BASE_URL + port + "/api/auth/users/login");
-        Response response = request.body(requestBody.toString()).post(BASE_URL + port + "/api/auth/users/login");
-        logger.info( response.asString());
+        Response response = request.body(requestBody.toString()).post(BASE_URL + port + "/auth/users/login/");
 
+        logger.info(response.jsonPath().getString("jwt"));
+        return response.jsonPath().getString("jwt");
     }
 
     //ToDo create user
