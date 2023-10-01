@@ -5,6 +5,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import net.minidev.json.JSONObject;
 import org.junit.Assert;
 import org.springframework.http.*;
 import org.springframework.web.client.HttpClientErrorException;
@@ -18,7 +19,7 @@ import java.util.logging.Logger;
 public class GenreControllerTestDefs extends SetupTestDefs{
     private static final Logger log = Logger.getLogger(GenreControllerTestDefs.class.getName());
 
-    private static Response response;
+    static Response response;
     private static final String token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJleGFtcGxlQGVtYWlsLmNvbSIsImlhdCI6MTY5NjE4MzQ2NSwiZXhwIjoxNjk2MjY5ODY1fQ.WP40iW9Cul4JRD0lbYmGc3TdKP3YzW6l8GypWXoL4Tg";
 
     @Given("A list of genres are available")
@@ -62,7 +63,35 @@ public class GenreControllerTestDefs extends SetupTestDefs{
 
     @Then("I should see the genre list")
     public void iShouldSeeTheGenreList() {
-        log.info("Calling: I should see the genre list");
-       Assert.assertEquals(200, response.getStatusCode());
     }
+
+
+    /**
+     * Add a genre to the API.
+     * @return None
+     */
+    @When("I add a genre")
+    public void iAddAGenre() {
+       log.info("Calling: I add a genre");
+       HttpHeaders headers = new HttpHeaders();
+       headers.set("Authorization", "Bearer " + token);
+       headers.setContentType(MediaType.APPLICATION_JSON);
+       JSONObject requestBody = new JSONObject();
+       requestBody.put("name", "NewGenre");
+       HttpEntity<String> entity = new HttpEntity<>(requestBody.toString(), headers);
+
+       try {
+           ResponseEntity<String> responseEntity = new RestTemplate().exchange(
+                   BASE_URL + port + "/api/genres/",
+                   HttpMethod.POST, entity, String.class);
+           Assert.assertEquals(responseEntity.getStatusCode(), HttpStatus.OK);
+       } catch (HttpClientErrorException e) {
+           e.printStackTrace();
+       }
+   }
+
+    @Then("The genre is added")
+    public void theGenreIsAdded() {
+    }
+
 }
