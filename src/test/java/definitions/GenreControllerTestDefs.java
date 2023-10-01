@@ -6,9 +6,7 @@ import io.cucumber.java.en.When;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.Assert;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
@@ -26,8 +24,15 @@ public class GenreControllerTestDefs extends SetupTestDefs{
     public void aListOfGenresAreAvailable() {
         log.info("Calling: A list of genres are available");
         try {
+            // Create HttpHeaders instance
+            HttpHeaders headers = new HttpHeaders();
+            // Set the authorization header, with a token
+            headers.set("Authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJleGFtcGxlQGVtYWlsLmNvbSIsImlhdCI6MTY5NjE4MzQ2NSwiZXhwIjoxNjk2MjY5ODY1fQ.WP40iW9Cul4JRD0lbYmGc3TdKP3YzW6l8GypWXoL4Tg");
+            // Create HttpEntity with headers
+            HttpEntity<String> entity = new HttpEntity<>(headers);
+
             ResponseEntity<String> responseEntity = new RestTemplate().exchange(BASE_URL + port + "/api/genres/",
-                    HttpMethod.GET, null, String.class);
+                    HttpMethod.GET, entity, String.class);
             List<Map<String, String>> genreList = JsonPath.from(String.valueOf(responseEntity.getBody())).get("data");
             Assert.assertEquals(responseEntity.getStatusCode(), HttpStatus.OK);
             Assert.assertTrue(genreList.size() > 0);
