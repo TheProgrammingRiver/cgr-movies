@@ -74,6 +74,12 @@ public class MovieControllerTestDefs extends SetupTestDefs{
         response = request.body(requestBody.toString()).put(BASE_URL+port+"/api/genres/1/movies/1/");
     }
 
+    @Then("The movie is edited")
+    public void theMovieIsEdited() {
+        log.info("Calling theMovieIsEdited");
+        Assert.assertEquals(200, response.getStatusCode());
+    }
+
 
     @When("I remove  a movie with a specific genre from my list")
     public void iRemoveAMovieWithASpecificGenreFromMyList() {
