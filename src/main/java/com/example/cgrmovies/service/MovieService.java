@@ -54,6 +54,20 @@ public class MovieService {
         }
         return null;
     }
-    // RUD
 
+    public Movie updateGenreMovie( Long genreId, Long movieId, Movie movie){
+        Genre genre = genreService.getGenreById(genreId);
+        if (genre != null){
+            Optional<Movie> existingMovie = movieRepository.findByIdAndGenreId(movieId, genreId);
+            if (existingMovie.isPresent()){
+                existingMovie.get().setName(movie.getName());
+                existingMovie.get().setDescription(movie.getDescription());
+                existingMovie.get().setRating(movie.getRating());
+                return movieRepository.save(existingMovie.get());
+            } else {
+                throw new InformationNotFoundException("Movie " + movie.getName() + " Not found");
+            }
+        }
+        return null;
+    }
 }

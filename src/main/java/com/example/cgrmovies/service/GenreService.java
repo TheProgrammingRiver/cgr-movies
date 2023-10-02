@@ -56,8 +56,4 @@ public class GenreService {
             return genre.get();
         }
     }
-
-
-
-
 }
