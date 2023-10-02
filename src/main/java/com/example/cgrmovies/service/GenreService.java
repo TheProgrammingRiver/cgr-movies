@@ -37,8 +37,6 @@ public class GenreService {
 
     }
 
-    //TODO get the current user
-
     public List<Genre> getAllGenres(){
         return genreRepository.findAll();
     }
