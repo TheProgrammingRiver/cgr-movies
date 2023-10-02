@@ -70,4 +70,10 @@ public class MovieControllerTestDefs extends SetupTestDefs{
         request.headers("Authorization","Bearer " + token);
         response = request.delete(BASE_URL+port+"/api/genres/1/movies/1/");
     }
+
+    @Then("The movie is removed")
+    public void theMovieIsRemoved() {
+        log.info("Calling theMovieIsRemoved");
+        Assert.assertEquals(200, response.getStatusCode());
+    }
 }
