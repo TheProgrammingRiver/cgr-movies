@@ -1,6 +1,7 @@
 package definitions;
 
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
@@ -52,5 +53,11 @@ public class MovieControllerTestDefs extends SetupTestDefs{
         requestBody.put("description", "Movie Description");
         request.header("Content-Type", "application/json");
         response = request.body(requestBody.toString()).post(BASE_URL+port+"/api/genres/1/movies");
+    }
+
+    @Then("The movie is added")
+    public void theMovieIsAdded() {
+        log.info("Calling theMovieIsAdded");
+        Assert.assertEquals(201, response.getStatusCode());
     }
 }
