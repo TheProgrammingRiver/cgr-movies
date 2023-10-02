@@ -1,6 +1,7 @@
 package com.example.cgrmovies.service;
 
 import com.example.cgrmovies.exception.InformationExistsException;
+import com.example.cgrmovies.exception.InformationNotFoundException;
 import com.example.cgrmovies.model.Genre;
 import com.example.cgrmovies.model.User;
 import com.example.cgrmovies.repository.GenreRepository;
@@ -38,7 +39,13 @@ public class GenreService {
     }
 
     public List<Genre> getAllGenres(){
-        return genreRepository.findAll();
+        List<Genre> genreList = genreRepository.findAllByUserId(getCurrentLoggedInUser().getId());
+        if(genreList.isEmpty()){
+            throw new InformationNotFoundException("Genre list is empty");
+
+        } else {
+            return genreList;
+        }
     }
 
 
