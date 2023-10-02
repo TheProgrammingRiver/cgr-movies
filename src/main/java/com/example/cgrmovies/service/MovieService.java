@@ -70,4 +70,18 @@ public class MovieService {
         }
         return null;
     }
+
+    public Movie deleteGenreMovie(Long genreId, Long movieId){
+        Genre genre = genreService.getGenreById(genreId);
+        if (genre != null){
+            Optional<Movie> existingMovie = movieRepository.findByIdAndGenreId(movieId, genreId);
+            if (existingMovie.isPresent()){
+                movieRepository.deleteById(movieId);
+                return existingMovie.get();
+            } else {
+                throw new InformationNotFoundException("Movie " + movieId + " Not found");
+            }
+        }
+        return null;
+    }
 }

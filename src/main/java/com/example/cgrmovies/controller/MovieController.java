@@ -1,5 +1,6 @@
 package com.example.cgrmovies.controller;
 
+import com.example.cgrmovies.model.Genre;
 import com.example.cgrmovies.model.Movie;
 import com.example.cgrmovies.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/api")
@@ -48,7 +50,7 @@ public class MovieController {
         }
     }
 
-    @PutMapping(path = "/genres/{genreId}/movies/{movieId}")
+    @PutMapping(path = "/genres/{genreId}/movies/{movieId}/")
     public ResponseEntity<?> updateGenreMovie(@PathVariable(value = "genreId") Long genreId, @PathVariable(value = "movieId")
     Long movieId, @RequestBody Movie movie){
         Movie updatedMovie = movieService.updateGenreMovie(genreId, movieId, movie);
@@ -58,6 +60,19 @@ public class MovieController {
             return new ResponseEntity<>(message, HttpStatus.OK);
         } else {
             message.put("message", "Movie with genre " + genreId + " cannot be updated");
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @DeleteMapping(path = "/genres/{genreId}/movies/{movieId}/")
+    public ResponseEntity<?> deleteGenreMovie(@PathVariable(value = "genreId")Long genreId, @PathVariable(value = "movieId")Long movieId){
+        Movie deletedMovie = movieService.deleteGenreMovie(genreId, movieId);
+        if( deletedMovie != null){
+            message.put("message", "Movie with genre " + genreId + " deleted");
+            message.put("data", deletedMovie);
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        } else {
+            message.put("message", "Movie with genre " + genreId + " cannot be deleted");
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
     }
