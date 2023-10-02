@@ -61,6 +61,19 @@ public class MovieControllerTestDefs extends SetupTestDefs{
         Assert.assertEquals(201, response.getStatusCode());
     }
 
+    @When("I edit a movie from my movies list")
+    public void iEditAMovieFromMyMoviesList() throws JSONException {
+        log.info("Calling I edit a movie from my movies list");
+        RestAssured.baseURI = BASE_URL;
+        RequestSpecification request = RestAssured.given();
+        JSONObject requestBody = new JSONObject();
+        requestBody.put("name", "A Movie Name");
+        requestBody.put("description", "A Movie Description");
+        request.header("Content-Type", "application/json");
+        request.headers("Authorization","Bearer " + token);
+        response = request.body(requestBody.toString()).put(BASE_URL+port+"/api/genres/1/movies/1/");
+    }
+
 
     @When("I remove  a movie with a specific genre from my list")
     public void iRemoveAMovieWithASpecificGenreFromMyList() {
@@ -76,4 +89,5 @@ public class MovieControllerTestDefs extends SetupTestDefs{
         log.info("Calling theMovieIsRemoved");
         Assert.assertEquals(200, response.getStatusCode());
     }
+
 }
