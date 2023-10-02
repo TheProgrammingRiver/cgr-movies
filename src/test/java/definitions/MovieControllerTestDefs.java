@@ -113,4 +113,10 @@ public class MovieControllerTestDefs extends SetupTestDefs{
             e.printStackTrace();
         }
     }
+
+    @Then("All movies are shown")
+    public void allMoviesAreShown() {
+        log.info("Calling allMoviesAreShown");
+        Assert.assertEquals(200, response.getStatusCode());
+    }
 }

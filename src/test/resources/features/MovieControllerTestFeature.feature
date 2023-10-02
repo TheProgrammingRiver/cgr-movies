@@ -6,7 +6,7 @@ Feature: Movie Rest API functionalities
     Then The movie is added
     When I edit a movie from my movies list
     Then The movie is edited
-#    When I remove a movie with a specific genre from my list
-#    Then The movie is removed
-#    When I see all the movies
-#    Then All movies are shown
+    When I remove a movie with a specific genre from my list
+    Then The movie is removed
+    When I see all the movies
+    Then All movies are shown
