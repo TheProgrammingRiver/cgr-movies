@@ -16,6 +16,10 @@ import static definitions.GenreControllerTestDefs.response;
 public class UserControllerTestDefs  extends SetupTestDefs{
     private final Logger logger = Logger.getLogger(UserControllerTestDefs.class.getName());
 
+    /**
+     * A registered user logs in.
+     * @return The JWT token of the logged in user.
+     */
     @When("A registered user logs in")
     public String aRegisteredUserLogsIn() throws JSONException {
         logger.info("Calling: A registered user logs in.");

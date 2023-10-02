@@ -79,7 +79,6 @@ public class GenreControllerTestDefs extends SetupTestDefs{
        JSONObject requestBody = new JSONObject();
        requestBody.put("name", "NewGenre");
        HttpEntity<String> entity = new HttpEntity<>(requestBody.toString(), headers);
-
        try {
            ResponseEntity<String> responseEntity = new RestTemplate().exchange(
                    BASE_URL + port + "/api/genres/",
