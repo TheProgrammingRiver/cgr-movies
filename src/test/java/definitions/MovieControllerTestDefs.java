@@ -24,15 +24,15 @@ public class MovieControllerTestDefs extends SetupTestDefs{
     static Response response;
 
 
-    @Given("A list of movies are available")
-    public void aListOfMoviesAreAvailable() {
+    @Given("A list of movies with a specific genre are available")
+    public void aListOfMoviesWithASpecificGenreAreAvailable() {
         log.info("Calling A list of movies are available");
         try {
             HttpHeaders headers = new HttpHeaders();
             headers.set("Authorization", "Bearer " + token);
             HttpEntity<String> entity = new HttpEntity<>(headers);
 
-            ResponseEntity<String> response = new RestTemplate().exchange(BASE_URL + port + "/api/genres/1/movies", HttpMethod.GET, entity, String.class);
+            ResponseEntity<String> response = new RestTemplate().exchange(BASE_URL + port + "/api/genres/1/movies/", HttpMethod.GET, entity, String.class);
             List<Map<String, String>> movies = JsonPath.from(String.valueOf(response.getBody())).get("data");
             Assert.assertEquals(response.getStatusCode(), HttpStatus.OK);
             Assert.assertTrue(movies.size() > 0);
@@ -52,7 +52,7 @@ public class MovieControllerTestDefs extends SetupTestDefs{
         requestBody.put("description", "Movie Description");
         request.header("Content-Type", "application/json");
         request.headers("Authorization","Bearer " + token);
-        response = request.body(requestBody.toString()).post(BASE_URL+port+"/api/genres/1/movies");
+        response = request.body(requestBody.toString()).post(BASE_URL+port+"/api/genres/1/movies/");
     }
 
     @Then("The movie is added")
@@ -81,7 +81,7 @@ public class MovieControllerTestDefs extends SetupTestDefs{
     }
 
 
-    @When("I remove  a movie with a specific genre from my list")
+    @When("I remove a movie with a specific genre from my list")
     public void iRemoveAMovieWithASpecificGenreFromMyList() {
         log.info("Calling I remove  a movie with a specific genre from my list");
         RequestSpecification request = RestAssured.given();
@@ -96,4 +96,21 @@ public class MovieControllerTestDefs extends SetupTestDefs{
         Assert.assertEquals(200, response.getStatusCode());
     }
 
+    @When("I see all the movies")
+    public void iSeeAllTheMovies() {
+        log.info("I see all the movies");
+        try {
+            HttpHeaders headers = new HttpHeaders();
+            headers.set("Authorization", "Bearer " + token);
+            HttpEntity<String> entity = new HttpEntity<>(headers);
+
+            ResponseEntity<String> response = new RestTemplate().exchange(BASE_URL + port + "/api/movies/", HttpMethod.GET, entity, String.class);
+            List<Map<String, String>> movies = JsonPath.from(String.valueOf(response.getBody())).get("data");
+            Assert.assertEquals(response.getStatusCode(), HttpStatus.OK);
+            Assert.assertTrue(movies.size() > 0);
+
+        } catch (HttpClientErrorException e) {
+            e.printStackTrace();
+        }
+    }
 }
