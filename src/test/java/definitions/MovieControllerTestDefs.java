@@ -1,8 +1,13 @@
 package definitions;
 
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
+import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.junit.Assert;
 import org.springframework.http.*;
 import org.springframework.web.client.HttpClientErrorException;
@@ -37,5 +42,15 @@ public class MovieControllerTestDefs extends SetupTestDefs{
         }
     }
 
-
+    @When("I add a movie to my movies list")
+    public void iAddAMovieToMyMoviesList() throws JSONException {
+        log.info("Calling I add a movie to my movies list");
+        RestAssured.baseURI = BASE_URL;
+        RequestSpecification request = RestAssured.given();
+        JSONObject requestBody = new JSONObject();
+        requestBody.put("name", "Movie Name");
+        requestBody.put("description", "Movie Description");
+        request.header("Content-Type", "application/json");
+        response = request.body(requestBody.toString()).post(BASE_URL+port+"/api/genres/1/movies");
+    }
 }
