@@ -3,8 +3,10 @@ package definitions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import net.minidev.json.JSONObject;
 import org.junit.Assert;
 import org.springframework.http.*;
@@ -31,7 +33,6 @@ public class GenreControllerTestDefs extends SetupTestDefs{
             headers.set("Authorization", "Bearer " + token);
             // Create HttpEntity with headers
             HttpEntity<String> entity = new HttpEntity<>(headers);
-
             ResponseEntity<String> responseEntity = new RestTemplate().exchange(BASE_URL + port + "/api/genres/",
                     HttpMethod.GET, entity, String.class);
             List<Map<String, String>> genreList = JsonPath.from(String.valueOf(responseEntity.getBody())).get("data");
@@ -41,33 +42,24 @@ public class GenreControllerTestDefs extends SetupTestDefs{
             e.printStackTrace();
         }
     }
-
-
-    /**
-     * Add a genre to the API.
-     * @return None
-     */
+    
     @When("I add a genre")
     public void iAddAGenre() {
        log.info("Calling: I add a genre");
-       HttpHeaders headers = new HttpHeaders();
-       headers.set("Authorization", "Bearer " + token);
-       headers.setContentType(MediaType.APPLICATION_JSON);
+       RestAssured.baseURI = BASE_URL;
+       RequestSpecification request = RestAssured.given();
        JSONObject requestBody = new JSONObject();
        requestBody.put("name", "NewGenre");
-       HttpEntity<String> entity = new HttpEntity<>(requestBody.toString(), headers);
-       try {
-           ResponseEntity<String> responseEntity = new RestTemplate().exchange(
-                   BASE_URL + port + "/api/genres/",
-                   HttpMethod.POST, entity, String.class);
-           Assert.assertEquals(responseEntity.getStatusCode(), HttpStatus.OK);
-       } catch (HttpClientErrorException e) {
-           e.printStackTrace();
+       requestBody.put("description", "New Genre Description");
+       request.header("Content-Type", "application/json");
+       request.headers("Authorization", "Bearer " + token);
+       response = request.body(requestBody.toString()).post(BASE_URL + port + "/api/genres/");
        }
-   }
+
 
     @Then("The genre is added")
     public void theGenreIsAdded() {
+        log .info("Calling: The genre is added");
+        Assert.assertEquals(201, response.getStatusCode());
     }
-
 }
