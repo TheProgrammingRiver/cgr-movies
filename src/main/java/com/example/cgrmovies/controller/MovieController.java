@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -34,5 +35,18 @@ public class MovieController {
             return new ResponseEntity<>(message, HttpStatus.CONFLICT);
         }
 
+    }
+
+    @GetMapping(path = "/genres/{genreId}/movies/")
+    public ResponseEntity<?> getAllGenreMovies(@PathVariable(value = "genreId") Long genreId){
+        List<Movie> movieList = movieService.getAllGenreMovies(genreId);
+        if (movieList != null){
+            message.put("message", "Movie list of genre with "+ genreId + " retrieved");
+            message.put("data", movieList);
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        } else {
+            message.put("message", "Movie list of genre with " + genreId + " cannot be retrieved");
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        }
     }
 }

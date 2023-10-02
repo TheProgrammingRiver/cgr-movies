@@ -9,19 +9,21 @@ import com.example.cgrmovies.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
 @Service
 public class MovieService {
     Logger log = Logger.getLogger(MovieService.class.getName());
-    private MovieRepository movieRepository;
-    private GenreRepository genreRepository;
-    private GenreService genreService = new GenreService();
+    private final MovieRepository movieRepository;
+    private final GenreRepository genreRepository;
+    private final GenreService genreService;
     @Autowired
-    public MovieService(MovieRepository movieRepository, GenreRepository genreRepository) {
+    public MovieService(MovieRepository movieRepository, GenreRepository genreRepository, GenreService genreService) {
         this.movieRepository = movieRepository;
         this.genreRepository = genreRepository;
+        this.genreService = genreService;
     }
     public Movie createGenreMovie(Long genreId, Movie movie){
         Optional<Genre> genre = genreRepository.findByIdAndUserId(genreId, genreService.getCurrentLoggedInUser().getId());
@@ -38,6 +40,19 @@ public class MovieService {
         } else {
             throw new InformationNotFoundException("Genre with id " + genreId + " not found");
         }
+    }
+
+    public List<Movie> getAllGenreMovies(Long genreId){
+        Genre genre = genreService.getGenreById(genreId);
+        if (genre != null) {
+            List<Movie> movieList = movieRepository.findAllByGenreId(genreId);
+            if (movieList.isEmpty()) {
+                throw new InformationNotFoundException("Movie list is empty for genre with id " + genreId);
+            } else {
+                return movieList;
+            }
+        }
+        return null;
     }
     // RUD
 
