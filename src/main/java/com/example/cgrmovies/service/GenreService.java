@@ -4,11 +4,8 @@ import com.example.cgrmovies.model.Genre;
 import com.example.cgrmovies.repository.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Optional;
+import java.util.List;
 
 @Service
 public class GenreService {
@@ -22,5 +19,12 @@ public class GenreService {
     public Genre createGenre(Genre genre){
         return genreRepository.save(genre);
     }
+
+    //TODO get the current user
+
+    public List<Genre> getAllGenres(){
+        return genreRepository.findAll();
+    }
+
 
 }

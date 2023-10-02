@@ -5,12 +5,10 @@ import com.example.cgrmovies.service.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api")
@@ -34,6 +32,19 @@ public class GenreController {
         } else {
             message.put("message", "Cannot create genre");
             return new ResponseEntity<>(message, HttpStatus.CONFLICT);
+        }
+    }
+
+    @GetMapping(path = "/genres/")
+    public ResponseEntity<?> getAllGenres() {
+        List<Genre> genreList = genreService.getAllGenres();
+        if (genreList != null) {
+            message.put("message", "Genre list retrieved");
+            message.put("data", genreList);
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        } else {
+            message.put("message", "Cannot retrieve genre list");
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
     }
 }
