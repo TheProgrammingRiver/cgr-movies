@@ -25,6 +25,7 @@ public class GenreService {
     }
 
     public Genre createGenre(Genre genre){
+        genreRepository.findByName()
         return genreRepository.save(genre);
     }
 
