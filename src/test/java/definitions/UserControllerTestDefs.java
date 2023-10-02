@@ -11,10 +11,10 @@ import org.json.JSONObject;
 
 import java.util.logging.Logger;
 
-import static definitions.GenreControllerTestDefs.response;
 
 public class UserControllerTestDefs  extends SetupTestDefs{
     private final Logger logger = Logger.getLogger(UserControllerTestDefs.class.getName());
+    static Response response;
 
     /**
      * A registered user logs in.
