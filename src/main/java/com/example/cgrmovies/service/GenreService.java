@@ -22,7 +22,7 @@ public class GenreService {
         this.genreRepository = genreRepository;
     }
 
-    public static User getCurrentLoggedInUser() {
+    public User getCurrentLoggedInUser() {
         MyUserDetails userDetails = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return userDetails.getUser();
     }
@@ -48,7 +48,12 @@ public class GenreService {
         }
     }
 
-
-
-
+    public Genre getGenreById(Long genreId){
+        Optional<Genre> genre = genreRepository.findByIdAndUserId(genreId, getCurrentLoggedInUser().getId());
+        if ( genre.isEmpty()){
+            throw new InformationNotFoundException("Genre with id " + genreId + " not found");
+        } else {
+            return genre.get();
+        }
+    }
 }

@@ -88,17 +88,17 @@ A Java-based web application designed for users to curate their movie consumptio
 ![ERD](https://github.com/GabrielleYnara/cgr-movies/blob/security/assets/cgr-movies.png)
 
 ## API Endpoints
-| HTTP Methods | Endpoint URL                           | Functionality                           | Access    | 
-|--------------|----------------------------------------|-----------------------------------------|-----------|
-| POST         | `/api/users/register/`                 | Register a new user                     | public    |
-| POST         | `/api/users/login/`                    | Login a registered user                 | public    |
-| POST         | `/api/genres/`                         | Create a genre                          | private   |
-| GET          | `/api/genres/`                         | Get all the genres                      | private   |
-| POST         | `/api/genres/1/movies/1/`              | Create a movie by the ID and genre ID   | private   |
-| GET          | `/api/genres/1/movies/`                | Get all the movies of a given genre     | private   |
-| GET          | `/api/genres/1/movies/1/`              | Get a movie by the ID and genre ID      | private   |
-| PUT          | `/api/genres/1/movies/1/`              | Edit a movie by the ID and genre ID     | private   |
-| DELETE       | `/api/genres/1/movies/1/`              | Delete a movie by the ID and genre ID   | private   |
-| GET          | `/api/movies/`                         | Get all the movies                      | private   |
-| GET          | `/api/genre/1/movies/status?watched`   | Get all the movies filtered by status   | private   |
+| HTTP Methods | Endpoint URL                          | Functionality                             | Access    | 
+|--------------|---------------------------------------|-------------------------------------------|-----------|
+| POST         | `/api/users/register/`                | Register a new user                       | public    |
+| POST         | `/api/users/login/`                   | Login a registered user                   | public    |
+| POST         | `/api/genres/`                        | Create a genre                            | private   |
+| GET          | `/api/genres/`                        | Get all the genres                        | private   |
+| POST         | `/api/genres/1/movies`                | Create a movie by a genre ID              | private   |
+| GET          | `/api/genres/1/movies/`               | Get all the movies of a given genre       | private   |
+| GET          | `/api/genres/1/movies/1/`             | Get a movie by the ID and genre ID        | private   |
+| PUT          | `/api/genres/1/movies/1/`             | Edit a movie by the ID and genre ID       | private   |
+| DELETE       | `/api/genres/1/movies/1/`             | Delete a movie by the ID and genre ID     | private   |
+| GET          | `/api/movies/`                        | Get all the movies                        | private   |
+| GET          | `/api/genre/1/movies/status?watched`  | Get all the movies filtered by status     | private   |
 
