@@ -42,7 +42,7 @@ public class GenreControllerTestDefs extends SetupTestDefs{
             e.printStackTrace();
         }
     }
-    
+
     @When("I add a genre")
     public void iAddAGenre() {
        log.info("Calling: I add a genre");

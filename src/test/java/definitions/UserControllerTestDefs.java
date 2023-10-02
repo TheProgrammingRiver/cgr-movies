@@ -7,6 +7,7 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.junit.Assert;
 
 
 import java.util.logging.Logger;
@@ -29,7 +30,7 @@ public class UserControllerTestDefs  extends SetupTestDefs{
         JSONObject requestBody = new JSONObject();
         requestBody.put("emailAddress", "example@email.com");
         requestBody.put("password", "password");
-        Response response = request.body(requestBody.toString()).post(BASE_URL + port + "/auth/users/login/");
+        response = request.body(requestBody.toString()).post(BASE_URL + port + "/auth/users/login/");
 
         logger.info(response.jsonPath().getString("jwt"));
         return response.jsonPath().getString("jwt");
@@ -37,6 +38,8 @@ public class UserControllerTestDefs  extends SetupTestDefs{
 
     @Then("A user is authenticated")
     public void aUserIsAuthenticated() {
+        logger.info("Calling: A user is authenticated.");
+        Assert.assertEquals(200, response.getStatusCode());
     }
 
     /**
@@ -60,5 +63,7 @@ public class UserControllerTestDefs  extends SetupTestDefs{
 
     @Then("A user is registered")
     public void aUserIsRegistered() {
+        logger.info("Calling: A user is registered.");
+        Assert.assertEquals(201, response.getStatusCode());
     }
 }

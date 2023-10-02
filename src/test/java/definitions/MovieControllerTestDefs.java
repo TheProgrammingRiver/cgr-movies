@@ -23,7 +23,6 @@ public class MovieControllerTestDefs extends SetupTestDefs{
     private static final Logger log = Logger.getLogger(MovieControllerTestDefs.class.getName());
     static Response response;
 
-    private static final String token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJleGFtcGxlQGVtYWlsLmNvbSIsImlhdCI6MTY5NjE4MzQ2NSwiZXhwIjoxNjk2MjY5ODY1fQ.WP40iW9Cul4JRD0lbYmGc3TdKP3YzW6l8GypWXoL4Tg";
 
     @Given("A list of movies are available")
     public void aListOfMoviesAreAvailable() {
