@@ -60,6 +60,18 @@ public class MovieController {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
     }
+    @GetMapping(path = "/movies/byStatus/")
+    public ResponseEntity<?> getMoviesByStatus(@RequestParam String status){
+        List<Movie> movieList = movieService.getMoviesByStatus(Movie.MovieStatus.valueOf(status));
+        if (movieList != null){
+            message.put("message", "Movie list with " + status + " retrieved");
+            message.put("data", movieList);
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        } else {
+            message.put("message", "Movie list with " + status + " cannot be retrieved");
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        }
+    }
 
     @GetMapping(path = "/movies/")
     public ResponseEntity<?> getAllMovies(){

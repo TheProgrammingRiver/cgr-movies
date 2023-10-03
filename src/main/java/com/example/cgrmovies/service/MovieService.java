@@ -110,6 +110,14 @@ public class MovieService {
         return null;
     }
 
+    public List<Movie> getMoviesByStatus(Movie.MovieStatus status){
+        List<Movie> movieList = movieRepository.findAllByStatus(status);
+        if (movieList.isEmpty()) {
+            throw new InformationNotFoundException("Movie list is empty for status " + status.name());
+        } else {
+            return movieList;
+        }
+    }
     /**
      * Updates the genre of a movie.
      *
