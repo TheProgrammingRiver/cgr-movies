@@ -61,6 +61,19 @@ public class MovieController {
         }
     }
 
+    @GetMapping(path = "/movies/")
+    public ResponseEntity<?> getAllMovies(){
+        List<Movie> movieList = movieService.getAllMovies();
+        if (movieList != null){
+            message.put("message", "All Movies retrieved");
+            message.put("data", movieList);
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        } else {
+            message.put("message", "Movie list cannot be retrieved");
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PutMapping(path = "/genres/{genreId}/movies/{movieId}/")
     public ResponseEntity<?> updateGenreMovie(@PathVariable(value = "genreId") Long genreId, @PathVariable(value = "movieId")
     Long movieId, @RequestBody Movie movie){

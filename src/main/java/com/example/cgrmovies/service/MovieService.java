@@ -68,6 +68,22 @@ public class MovieService {
         return null;
     }
 
+    public List<Movie> getAllMovies(){
+        List<Long> genreIdList = genreRepository.findIdsByUserId(genreService.getCurrentLoggedInUser().getId());
+
+        if (!genreIdList.isEmpty()) {
+            log.info("HERE: all genre ids not empty");
+            List<Movie> movieList = movieRepository.findAllByGenreIdIn(genreIdList);
+            if (movieList.isEmpty()) {
+                throw new InformationNotFoundException("Movie list is empty");
+            } else {
+                log.info("HERE: all movies returned empty");
+                return movieList;
+            }
+        }
+        return null;
+    }
+
     public Movie updateGenreMovie( Long genreId, Long movieId, Movie movie){
         Genre genre = genreService.getGenreById(genreId);
         if (genre != null){
