@@ -105,7 +105,12 @@ public class MovieController {
         }
     }
 
-
+    /**
+     * Retrieves all movies.
+     *
+     * @return         	Returns a ResponseEntity with the retrieved movies and an HttpStatus code.
+     *                  Otherwise, a ResponseEntity with a failure message
+     */
     @GetMapping(path = "/movies/")
     public ResponseEntity<?> getAllMovies(){
         List<Movie> movieList = movieService.getAllMovies();
