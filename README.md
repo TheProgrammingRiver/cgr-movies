@@ -13,7 +13,7 @@ and ensure unified coding standards. We began by defining our models, establishe
 measures using Spring Security and JSON Web Tokens, adopted Behavior-Driven Development (BDD) testing with Cucumber and Rest Assured to validate endpoints, and finally
 implemented the genre and movie endpoints.
 
-### USER-Stories
+### User-Stories
 <details>
   <summary>User</summary>
 
@@ -23,11 +23,25 @@ implemented the genre and movie endpoints.
         - The application should show an error if an email is not unique.
 
 2. As a user I want to log in account so that I can access my personalized content.
-- The user must provide a valid email and password combination.
-- The application should grant access to the personalized application content.
-- The application should show an error if given an invalid email and password.
+   - The user must provide a valid email and password combination.
+   - The application should grant access to the personalized application content.
+   - The application should show an error if given an invalid email and password.
 
 </details>
+
+<details>
+  <summary>Genre</summary>
+
+1. As a logged-in user I want to add a genre, so I can categorize my movies.
+   - The user must input a unique genre.
+      - The application should show an error if not.
+   - The user can input a description.
+
+2. As a logged-in user I want to see all the genres.
+   - The genre list should be populated.
+   - The application should provide the genre's list.
+</details>
+
 <details>
   <summary>Movie</summary>
 
@@ -83,19 +97,6 @@ implemented the genre and movie endpoints.
     - The application should provide the movie's list.
 </details>
 
-<details>
-  <summary>Genre</summary>
-
-1. As a logged-in user I want to add a genre, so I can categorize my movies.
-    - The user must input a unique genre.
-        - The application should show an error if not.
-    - The user can input a description.
-
-2. As a logged-in user I want to see all the genres.
-    - The genre list should be populated.
-    - The application should provide the genre's list.
-</details>
-
 ### ERD
 ![ERD](https://github.com/GabrielleYnara/cgr-movies/blob/security/assets/cgr-movies.png)
 
@@ -128,13 +129,13 @@ implemented the genre and movie endpoints.
 - Postman
 
 ### Future Improvements
-- implement a user interface
-- add a user profile 
-- change relationship to many-to-many between genre and movies 
+- Implement a user interface.
+- Add a user profile.
+- Change relationship to many-to-many between genre and movies.
 
 ### Acknowledgments
-This project was created as a part of the Software Engineering Immersive program offered by General Assembly. It served 
-as a collaborative group project to practice our skills in Java, Object-Oriented Programming, Spring Boot, 
+This project was created as a part of the Software Engineering Immersive program offered by General Assembly.  
+It served as a collaborative group project to practice our skills in Java, Object-Oriented Programming, Spring Boot, 
 Cucumber, and GitHub branch collaboration. 
 
 
