@@ -147,7 +147,14 @@ public class MovieController {
         }
     }
 
-
+    /**
+     * Delete a movie from a genre.
+     *
+     * @param  genreId   the ID of the genre
+     * @param  movieId   the ID of the movie
+     * @return           a ResponseEntity with a message and the deleted movie if successful,
+     *                   otherwise a ResponseEntity with an error message if the movie cannot be deleted
+     */
     @DeleteMapping(path = "/genres/{genreId}/movies/{movieId}/")
     public ResponseEntity<?> deleteGenreMovie(@PathVariable(value = "genreId")Long genreId, @PathVariable(value = "movieId")Long movieId){
         Movie deletedMovie = movieService.deleteGenreMovie(genreId, movieId);
