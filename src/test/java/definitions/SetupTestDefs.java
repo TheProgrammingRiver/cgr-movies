@@ -10,7 +10,7 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 public class SetupTestDefs {
     protected static final String BASE_URL = "http://localhost:";
 
-    protected static final String token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJleGFtcGxlQGVtYWlsLmNvbSIsImlhdCI6MTY5NjI1Nzc5MSwiZXhwIjoxNjk2MzQ0MTkxfQ.8UivRr_y5fle8-NGeqPDpXCtouNG7uyuztAAqivC0YI";
+    protected static final String token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJleGFtcGxlQGVtYWlsLmNvbSIsImlhdCI6MTY5NjM1NDIwOSwiZXhwIjoxNjk2NDQwNjA5fQ.SgNMr-YDlV1tCeJ-Oax4TT1darNHv9bxfPCp3-Qiemg";
 
     @LocalServerPort
     protected String port;
