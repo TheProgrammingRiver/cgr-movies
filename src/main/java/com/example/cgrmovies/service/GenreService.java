@@ -17,16 +17,30 @@ import java.util.Optional;
 public class GenreService {
 
     private GenreRepository genreRepository;
+
+    /**
+     * Sets the genre repository.
+     */
     @Autowired
     public void setGenreRepository(GenreRepository genreRepository) {
         this.genreRepository = genreRepository;
     }
 
+    /**
+     * Retrieves the current logged-in user.
+     * @return  the current logged-in user
+     */
     public User getCurrentLoggedInUser() {
         MyUserDetails userDetails = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return userDetails.getUser();
     }
 
+    /**
+     * Creates a new genre.
+     *
+     * @param  genre  the genre object to be created
+     * @return        the created genre object
+     */
     public Genre createGenre(Genre genre){
         Optional<Genre> genreOptional = genreRepository.findByNameAndUserId(genre.getName(), getCurrentLoggedInUser().getId());
         if(genreOptional.isEmpty()){
@@ -38,6 +52,10 @@ public class GenreService {
 
     }
 
+    /**
+     * Retrieves all genres associated with the current logged in user.
+     * @return         	A list of genres.
+     */
     public List<Genre> getAllGenres(){
         List<Genre> genreList = genreRepository.findAllByUserId(getCurrentLoggedInUser().getId());
         if(genreList.isEmpty()){
@@ -48,6 +66,12 @@ public class GenreService {
         }
     }
 
+    /**
+     * Retrieves a genre by its ID.
+     *
+     * @param  genreId  the ID of the genre
+     * @return          the genre with the specified ID
+     */
     public Genre getGenreById(Long genreId){
         Optional<Genre> genre = genreRepository.findByIdAndUserId(genreId, getCurrentLoggedInUser().getId());
         if ( genre.isEmpty()){
