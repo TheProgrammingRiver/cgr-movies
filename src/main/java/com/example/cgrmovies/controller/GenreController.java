@@ -62,6 +62,4 @@ public class GenreController {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
     }
-
-
 }
