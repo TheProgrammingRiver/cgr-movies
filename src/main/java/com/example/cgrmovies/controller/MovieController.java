@@ -63,7 +63,14 @@ public class MovieController {
         }
     }
 
-
+    /**
+     * Retrieves a movie by its ID and genre ID.
+     *
+     * @param  genreId  the ID of the genre
+     * @param  movieId  the ID of the movie
+     * @return          a ResponseEntity containing the movie and a success message if the movie is found,
+     *                  otherwise a ResponseEntity with a not found message
+     */
     @GetMapping(path = "/genres/{genreId}/movies/{movieId}/")
     public ResponseEntity<?> getMovieByIdAndGenreId(@PathVariable(value = "genreId") Long genreId,
                                                     @PathVariable(value = "movieId") Long movieId){
