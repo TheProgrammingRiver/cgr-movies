@@ -17,6 +17,10 @@ public class GenreController {
     private GenreService genreService;
 
     static HashMap<String, Object> message = new HashMap<>();
+
+    /**
+     * Sets the genre service.
+     */
     @Autowired
     public void setGenreService(GenreService genreService) {
         this.genreService = genreService;
