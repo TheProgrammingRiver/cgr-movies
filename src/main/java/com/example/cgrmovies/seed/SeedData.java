@@ -86,6 +86,30 @@ public class SeedData implements CommandLineRunner {
         movieRepository.save(movie3);
 
 
+        //genre2 movies
+        Movie movie4 = new Movie();
+        movie4.setName("Movie 4");
+        movie4.setDescription("Movie 4 Description");
+        movie4.setGenre(genre2);
+        movie4.setRating(2);
+        movieRepository.save(movie4);
+
+        Movie movie5 = new Movie();
+        movie5.setName("Movie 3");
+        movie5.setDescription("Movie 5 Description");
+        movie5.setGenre(genre2);
+        movie5.setRating(1);
+        movieRepository.save(movie5);
+
+        //genre3 movies
+        Movie movie6 = new Movie();
+        movie6.setName("Movie 6");
+        movie6.setDescription("Movie 6 Description");
+        movie6.setGenre(genre2);
+        movie6.setRating(3);
+        movieRepository.save(movie6);
+
+
     }
 
 }
