@@ -1,5 +1,6 @@
 package com.example.cgrmovies.service;
 
+import com.example.cgrmovies.exception.InformationExistsException;
 import com.example.cgrmovies.exception.InformationNotFoundException;
 import com.example.cgrmovies.model.User;
 import com.example.cgrmovies.model.request.LoginRequest;
@@ -72,6 +73,15 @@ public class UserService {
             return Optional.of(jwtUtils.generateJwtToken(myUserDetails));
         } catch (Exception e){
             return Optional.empty();
+        }
+    }
+
+    public User loginRegister(User user){
+        if (!userRepository.existsByEmailAddress(user.getEmailAddress())){
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            return userRepository.save(user);
+        } else {
+            throw new InformationExistsException("user with email address " + user.getEmailAddress() + " already exist");
         }
     }
 }
