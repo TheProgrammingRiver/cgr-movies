@@ -28,6 +28,20 @@ implemented the genre and movie endpoints.
    - The application should show an error if given an invalid email and password.
 
 </details>
+
+<details>
+  <summary>Genre</summary>
+
+1. As a logged-in user I want to add a genre, so I can categorize my movies.
+   - The user must input a unique genre.
+      - The application should show an error if not.
+   - The user can input a description.
+
+2. As a logged-in user I want to see all the genres.
+   - The genre list should be populated.
+   - The application should provide the genre's list.
+</details>
+
 <details>
   <summary>Movie</summary>
 
@@ -81,19 +95,6 @@ implemented the genre and movie endpoints.
         - The application should show an error if the genre is not found.
     - The movie list should be populated.
     - The application should provide the movie's list.
-</details>
-
-<details>
-  <summary>Genre</summary>
-
-1. As a logged-in user I want to add a genre, so I can categorize my movies.
-    - The user must input a unique genre.
-        - The application should show an error if not.
-    - The user can input a description.
-
-2. As a logged-in user I want to see all the genres.
-    - The genre list should be populated.
-    - The application should provide the genre's list.
 </details>
 
 ### ERD
