@@ -31,6 +31,12 @@ public class GenreService {
         return userDetails.getUser();
     }
 
+    /**
+     * Creates a new genre.
+     *
+     * @param  genre  the genre object to be created
+     * @return        the created genre object
+     */
     public Genre createGenre(Genre genre){
         Optional<Genre> genreOptional = genreRepository.findByNameAndUserId(genre.getName(), getCurrentLoggedInUser().getId());
         if(genreOptional.isEmpty()){
