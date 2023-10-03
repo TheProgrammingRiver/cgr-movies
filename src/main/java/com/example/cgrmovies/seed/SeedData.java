@@ -101,7 +101,6 @@ public class SeedData implements CommandLineRunner {
         movie5.setRating(1);
         movieRepository.save(movie5);
 
-        //genre3 movies
         Movie movie6 = new Movie();
         movie6.setName("Movie 6");
         movie6.setDescription("Movie 6 Description");
@@ -109,6 +108,27 @@ public class SeedData implements CommandLineRunner {
         movie6.setRating(3);
         movieRepository.save(movie6);
 
+        //genre3 movies
+        Movie movie7 = new Movie();
+        movie7.setName("Movie 7");
+        movie7.setDescription("Movie 7 Description");
+        movie7.setGenre(genre3);
+        movie7.setRating(2);
+        movieRepository.save(movie7);
+
+        Movie movie8 = new Movie();
+        movie8.setName("Movie 8");
+        movie8.setDescription("Movie 8 Description");
+        movie8.setGenre(genre3);
+        movie8.setRating(1);
+        movieRepository.save(movie8);
+
+        Movie movie9 = new Movie();
+        movie8.setName("Movie 9");
+        movie8.setDescription("Movie 9 Description");
+        movie8.setGenre(genre3);
+        movie8.setRating(1);
+        movieRepository.save(movie9);
 
     }
 
