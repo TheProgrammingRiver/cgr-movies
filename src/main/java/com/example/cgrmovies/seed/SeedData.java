@@ -71,22 +71,22 @@ public class SeedData implements CommandLineRunner {
 
         //genre1 movies
         Movie movie1 = new Movie();
-        movie1.setName("Movie 1");
-        movie1.setDescription("Movie 1 Description");
+        movie1.setName("Top Gun: Maverick");
+        movie1.setDescription("After thirty years, Maverick is still pushing the envelope as a top naval aviator, but must confront ghosts of his past when he leads TOP GUN's elite graduates on a mission that demands the ultimate sacrifice from those chosen to fly it.");
         movie1.setGenre(genre1);
         movie1.setRating(2);
         movieRepository.save(movie1);
 
         Movie movie2 = new Movie();
-        movie2.setName("Movie 2");
-        movie2.setDescription("Movie 2 Description");
+        movie2.setName("Fast Five");
+        movie2.setDescription("Dominic Toretto and his crew of street racers plan a massive heist to buy their freedom while in the sights of a powerful Brazilian drug lord and a dangerous federal agent.");
         movie2.setGenre(genre1);
         movie2.setRating(1);
         movieRepository.save(movie2);
 
         Movie movie3 = new Movie();
-        movie3.setName("Movie 3");
-        movie3.setDescription("Movie 3 Description");
+        movie3.setName("Avengers: Endgame");
+        movie3.setDescription("After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.");
         movie3.setGenre(genre1);
         movie3.setRating(3);
         movieRepository.save(movie3);
@@ -101,7 +101,7 @@ public class SeedData implements CommandLineRunner {
         movieRepository.save(movie4);
 
         Movie movie5 = new Movie();
-        movie5.setName("Movie 3");
+        movie5.setName("Movie 5");
         movie5.setDescription("Movie 5 Description");
         movie5.setGenre(genre2);
         movie5.setRating(1);
