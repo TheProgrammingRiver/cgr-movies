@@ -48,7 +48,12 @@ public class MovieService {
             throw new InformationNotFoundException("Genre with id " + genreId + " not found");
         }
     }
-
+    /**
+     * Retrieves all movies of a specific genre.
+     *
+     * @param  genreId   the ID of the genre
+     * @return           a list of movies belonging to the genre
+     */
     public List<Movie> getAllGenreMovies(Long genreId){
         Genre genre = genreService.getGenreById(genreId);
         if (genre != null) {
