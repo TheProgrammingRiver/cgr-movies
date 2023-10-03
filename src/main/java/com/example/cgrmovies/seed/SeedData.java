@@ -38,7 +38,7 @@ public class SeedData implements CommandLineRunner {
         user.setPassword(passwordEncoder.encode("password"));
         userRepository.save(user);
 
-
+        //genres
         Genre genre1 = new Genre();
         genre1.setName("Action");
         genre1.setDescription("Action description");
@@ -63,13 +63,29 @@ public class SeedData implements CommandLineRunner {
         genre4.setUser(user);
         genreRepository.save(genre4);
 
+        //genre1 movies
+        Movie movie1 = new Movie();
+        movie1.setName("Movie 1");
+        movie1.setDescription("Movie 1 Description");
+        movie1.setGenre(genre1);
+        movie1.setRating(2);
+        movieRepository.save(movie1);
 
-        Movie movie = new Movie();
-        movie.setName("Movie 1");
-        movie.setDescription("Movie 1 Description");
-        movie.setGenre(genre1);
-        movie.setRating(3);
-        movieRepository.save(movie);
+        Movie movie2 = new Movie();
+        movie2.setName("Movie 2");
+        movie2.setDescription("Movie 2 Description");
+        movie2.setGenre(genre1);
+        movie2.setRating(1);
+        movieRepository.save(movie2);
+
+        Movie movie3 = new Movie();
+        movie3.setName("Movie 3");
+        movie3.setDescription("Movie 3 Description");
+        movie3.setGenre(genre1);
+        movie3.setRating(3);
+        movieRepository.save(movie3);
+
+
     }
 
 }
