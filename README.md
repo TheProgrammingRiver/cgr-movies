@@ -129,13 +129,13 @@ implemented the genre and movie endpoints.
 - Postman
 
 ### Future Improvements
-- implement a user interface
-- add a user profile 
-- change relationship to many-to-many between genre and movies 
+- Implement a user interface.
+- Add a user profile.
+- Change relationship to many-to-many between genre and movies.
 
 ### Acknowledgments
-This project was created as a part of the Software Engineering Immersive program offered by General Assembly. It served 
-as a collaborative group project to practice our skills in Java, Object-Oriented Programming, Spring Boot, 
+This project was created as a part of the Software Engineering Immersive program offered by General Assembly.  
+It served as a collaborative group project to practice our skills in Java, Object-Oriented Programming, Spring Boot, 
 Cucumber, and GitHub branch collaboration. 
 
 
