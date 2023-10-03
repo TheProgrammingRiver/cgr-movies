@@ -124,7 +124,15 @@ public class MovieController {
         }
     }
 
-
+    /**
+     * Updates a genre movie.
+     *
+     * @param  genreId   the ID of the genre
+     * @param  movieId   the ID of the movie
+     * @param  movie     the updated movie object
+     * @return           a ResponseEntity with a message and data if the movie was updated successfully,
+     *                   otherwise a ResponseEntity with a failure message
+     */
     @PutMapping(path = "/genres/{genreId}/movies/{movieId}/")
     public ResponseEntity<?> updateGenreMovie(@PathVariable(value = "genreId") Long genreId, @PathVariable(value = "movieId")
     Long movieId, @RequestBody Movie movie){
