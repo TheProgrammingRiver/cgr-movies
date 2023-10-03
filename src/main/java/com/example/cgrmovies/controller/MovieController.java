@@ -85,7 +85,13 @@ public class MovieController {
         }
     }
 
-
+    /**
+     * Retrieves a list of movies based on the provided status.
+     *
+     * @param  status   the status of the movies
+     * @return          a ResponseEntity object containing the list of movies and a success message if the movies are retrieved,
+     *                  otherwise a ResponseEntity object with a failure message
+     */
     @GetMapping(path = "/movies/byStatus/")
     public ResponseEntity<?> getMoviesByStatus(@RequestParam String status){
         List<Movie> movieList = movieService.getMoviesByStatus(Movie.MovieStatus.valueOf(status));
