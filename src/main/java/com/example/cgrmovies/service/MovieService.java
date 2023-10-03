@@ -25,6 +25,14 @@ public class MovieService {
         this.genreRepository = genreRepository;
         this.genreService = genreService;
     }
+
+    /**
+     * Creates a genre movie.
+     *
+     * @param  genreId   the ID of the genre
+     * @param  movie     the movie to be created
+     * @return           the created movie
+     */
     public Movie createGenreMovie(Long genreId, Movie movie){
         Optional<Genre> genre = genreRepository.findByIdAndUserId(genreId, genreService.getCurrentLoggedInUser().getId());
         log.info("Calling: create movie from Service, userId: " + genreService.getCurrentLoggedInUser().getId().toString());
@@ -42,6 +50,12 @@ public class MovieService {
         }
     }
 
+    /**
+     * Retrieves all movies of a specific genre.
+     *
+     * @param  genreId   the ID of the genre
+     * @return           a list of movies belonging to the genre
+     */
     public List<Movie> getAllGenreMovies(Long genreId){
         Genre genre = genreService.getGenreById(genreId);
         if (genre != null) {
@@ -55,7 +69,14 @@ public class MovieService {
         return null;
     }
 
-    public Movie getMovieByIdAndGenreId(Long movieId, Long genreId){
+    /**
+     * Retrieves a movie by its genre ID and movie ID.
+     *
+     * @param  genreId   the ID of the genre
+     * @param  movieId   the ID of the movie
+     * @return           the movie with the specified genre ID and movie ID, or null if not found
+     */
+    public Movie getMovieByIdAndGenreId(Long genreId, Long movieId){
         Genre genre = genreService.getGenreById(genreId);
         if (genre != null) {
             Optional<Movie> movie = movieRepository.findByIdAndGenreId(movieId, genreId);
@@ -68,6 +89,11 @@ public class MovieService {
         return null;
     }
 
+    /**
+     * Retrieves all movies based on the user's genre preferences.
+     *
+     * @return  A list of movies that match the user's genre preferences.
+     */
     public List<Movie> getAllMovies(){
         List<Long> genreIdList = genreRepository.findIdsByUserId(genreService.getCurrentLoggedInUser().getId());
 
@@ -84,6 +110,14 @@ public class MovieService {
         return null;
     }
 
+    /**
+     * Updates the genre of a movie.
+     *
+     * @param  genreId  the ID of the genre to update
+     * @param  movieId  the ID of the movie to update
+     * @param  movie    the updated movie object
+     * @return          the updated movie object
+     */
     public Movie updateGenreMovie( Long genreId, Long movieId, Movie movie){
         Genre genre = genreService.getGenreById(genreId);
         if (genre != null){
@@ -100,6 +134,13 @@ public class MovieService {
         return null;
     }
 
+    /**
+     * Deletes a movie from a genre.
+     *
+     * @param  genreId   the ID of the genre
+     * @param  movieId   the ID of the movie
+     * @return           the deleted movie
+     */
     public Movie deleteGenreMovie(Long genreId, Long movieId){
         Genre genre = genreService.getGenreById(genreId);
         if (genre != null){
