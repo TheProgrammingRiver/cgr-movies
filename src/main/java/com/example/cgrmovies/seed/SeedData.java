@@ -94,22 +94,22 @@ public class SeedData implements CommandLineRunner {
 
         //genre2 movies
         Movie movie4 = new Movie();
-        movie4.setName("Movie 4");
-        movie4.setDescription("Movie 4 Description");
+        movie4.setName("Shazam!");
+        movie4.setDescription("A newly fostered young boy in search of his mother instead finds unexpected super powers and soon gains a powerful enemy.");
         movie4.setGenre(genre2);
         movie4.setRating(2);
         movieRepository.save(movie4);
 
         Movie movie5 = new Movie();
-        movie5.setName("Movie 5");
-        movie5.setDescription("Movie 5 Description");
+        movie5.setName("When We First Met");
+        movie5.setDescription("Noah meets Avery at a Halloween party and falls in love but gets friend-zoned. 3 years later, she's engaged to someone else. Noah returns in a time machine to fix things.");
         movie5.setGenre(genre2);
         movie5.setRating(1);
         movieRepository.save(movie5);
 
         Movie movie6 = new Movie();
-        movie6.setName("Movie 6");
-        movie6.setDescription("Movie 6 Description");
+        movie6.setName("Good Boys");
+        movie6.setDescription("Three 6th grade boys ditch school and embark on an epic journey while carrying accidentally stolen drugs, being hunted by teenage girls, and trying to make their way home in time for a long-awaited party.");
         movie6.setGenre(genre2);
         movie6.setRating(3);
         movieRepository.save(movie6);
