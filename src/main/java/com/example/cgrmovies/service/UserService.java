@@ -76,7 +76,13 @@ public class UserService {
         }
     }
 
-    public User loginRegister(User user){
+    /**
+     * Registers a new user
+     *
+     * @param  user  the User object containing the user's information
+     * @return       return the registered user
+     */
+    public User register(User user){
         if (!userRepository.existsByEmailAddress(user.getEmailAddress())){
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             return userRepository.save(user);
