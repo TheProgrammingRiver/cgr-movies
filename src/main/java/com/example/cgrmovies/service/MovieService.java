@@ -55,7 +55,7 @@ public class MovieService {
         return null;
     }
 
-    public Movie getMovieByIdAndGenreId(Long genreId, Long movieId){
+    public Movie getMovieByIdAndGenreId(Long movieId, Long genreId){
         Genre genre = genreService.getGenreById(genreId);
         if (genre != null) {
             Optional<Movie> movie = movieRepository.findByIdAndGenreId(movieId, genreId);
