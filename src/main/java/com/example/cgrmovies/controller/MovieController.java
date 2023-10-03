@@ -21,6 +21,14 @@ public class MovieController {
         this.movieService = movieService;
     }
 
+    /**
+     * Create a new movie for a specific genre.
+     *
+     * @param  genreId  the ID of the genre
+     * @param  movie    the movie object to be created
+     * @return          a ResponseEntity object with the created movie and a success message if the movie is created successfully,
+     *                  otherwise a ResponseEntity object with a failure message
+     */
     @PostMapping(path = "/genres/{genreId}/movies/")
     public ResponseEntity<?> createGenreMovie(@PathVariable(value = "genreId") Long genreId, @RequestBody Movie movie){
         Movie newMovie = movieService.createGenreMovie(genreId, movie);
@@ -32,9 +40,9 @@ public class MovieController {
             message.put("message", "Movie cannot be created");
             return new ResponseEntity<>(message, HttpStatus.CONFLICT);
         }
-
     }
 
+    
     @GetMapping(path = "/genres/{genreId}/movies/")
     public ResponseEntity<?> getAllGenreMovies(@PathVariable(value = "genreId") Long genreId){
         List<Movie> movieList = movieService.getAllGenreMovies(genreId);
@@ -47,6 +55,8 @@ public class MovieController {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
     }
+
+
     @GetMapping(path = "/genres/{genreId}/movies/{movieId}/")
     public ResponseEntity<?> getMovieByIdAndGenreId(@PathVariable(value = "genreId") Long genreId,
                                                     @PathVariable(value = "movieId") Long movieId){
@@ -60,6 +70,8 @@ public class MovieController {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
     }
+
+
     @GetMapping(path = "/movies/byStatus/")
     public ResponseEntity<?> getMoviesByStatus(@RequestParam String status){
         List<Movie> movieList = movieService.getMoviesByStatus(Movie.MovieStatus.valueOf(status));
@@ -72,6 +84,7 @@ public class MovieController {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
     }
+
 
     @GetMapping(path = "/movies/")
     public ResponseEntity<?> getAllMovies(){
@@ -86,6 +99,7 @@ public class MovieController {
         }
     }
 
+
     @PutMapping(path = "/genres/{genreId}/movies/{movieId}/")
     public ResponseEntity<?> updateGenreMovie(@PathVariable(value = "genreId") Long genreId, @PathVariable(value = "movieId")
     Long movieId, @RequestBody Movie movie){
@@ -99,6 +113,7 @@ public class MovieController {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
     }
+
 
     @DeleteMapping(path = "/genres/{genreId}/movies/{movieId}/")
     public ResponseEntity<?> deleteGenreMovie(@PathVariable(value = "genreId")Long genreId, @PathVariable(value = "movieId")Long movieId){
