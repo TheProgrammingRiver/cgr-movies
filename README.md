@@ -1,6 +1,18 @@
 # CGR-movies
 A Java-based web application designed for users to curate their movie consumption. The application provides a secure platform to access movie history privately.
 
+## Approach
+
+In this project, our goal was to create a movie database system with secure access. To achieve this, we began by defining our user stories
+to guide the development process, such as enabling users to search for movies by genre and securing endpoints. To manage our tasks and collaborate
+as a team, we used [Github Projects](https://github.com/users/GabrielleYnara/projects/3), adopting an Agile project management approach.
+
+
+Collaborative development was at the core of our process, with frequent driver-navigator and occasional pair programming, to facilitate knowledge sharing
+and ensure unified coding standards. We began by defining our models, established security
+measures using Spring Security and JSON Web Tokens, adopted Behavior-Driven Development (BDD) testing with Cucumber and Rest Assured to validate endpoints, and finally
+implemented the genre and movie endpoints.
+
 ## USER-Stories
 <details>
   <summary>User</summary>
@@ -101,4 +113,8 @@ A Java-based web application designed for users to curate their movie consumptio
 | DELETE       | `/api/genres/1/movies/1/`              | Delete a movie by the ID and genre ID     | private   |
 | GET          | `/api/movies/`                         | Get all the movies                        | private   |
 | GET          | `/api/movies/byStatus/?status=WATCHED` | Get all the movies filtered by status     | private   |
+
+
+
+
 
