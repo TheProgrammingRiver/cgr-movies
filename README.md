@@ -13,7 +13,7 @@ and ensure unified coding standards. We began by defining our models, establishe
 measures using Spring Security and JSON Web Tokens, adopted Behavior-Driven Development (BDD) testing with Cucumber and Rest Assured to validate endpoints, and finally
 implemented the genre and movie endpoints.
 
-### USER-Stories
+### User-Stories
 <details>
   <summary>User</summary>
 
@@ -23,9 +23,9 @@ implemented the genre and movie endpoints.
         - The application should show an error if an email is not unique.
 
 2. As a user I want to log in account so that I can access my personalized content.
-- The user must provide a valid email and password combination.
-- The application should grant access to the personalized application content.
-- The application should show an error if given an invalid email and password.
+   - The user must provide a valid email and password combination.
+   - The application should grant access to the personalized application content.
+   - The application should show an error if given an invalid email and password.
 
 </details>
 <details>
