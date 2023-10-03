@@ -22,6 +22,10 @@ public class GenreService {
         this.genreRepository = genreRepository;
     }
 
+    /**
+     * Retrieves the current logged-in user.
+     * @return  the current logged-in user
+     */
     public User getCurrentLoggedInUser() {
         MyUserDetails userDetails = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return userDetails.getUser();
