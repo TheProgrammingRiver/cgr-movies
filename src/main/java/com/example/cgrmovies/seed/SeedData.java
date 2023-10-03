@@ -116,24 +116,24 @@ public class SeedData implements CommandLineRunner {
 
         //genre3 movies
         Movie movie7 = new Movie();
-        movie7.setName("Movie 7");
-        movie7.setDescription("Movie 7 Description");
+        movie7.setName("No One Will Save You");
+        movie7.setDescription("An exiled anxiety-ridden homebody must battle an alien who's found its way into her home.");
         movie7.setGenre(genre3);
         movie7.setRating(2);
         movieRepository.save(movie7);
 
         Movie movie8 = new Movie();
-        movie8.setName("Movie 8");
-        movie8.setDescription("Movie 8 Description");
+        movie8.setName("A Haunting in Venice");
+        movie8.setDescription("In post-World War II Venice, Poirot, now retired and living in his own exile, reluctantly attends a seance. But when one of the guests is murdered, it is up to the former detective to once again to uncover the killer.");
         movie8.setGenre(genre3);
         movie8.setRating(1);
         movieRepository.save(movie8);
 
         Movie movie9 = new Movie();
-        movie8.setName("Movie 9");
-        movie8.setDescription("Movie 9 Description");
-        movie8.setGenre(genre3);
-        movie8.setRating(1);
+        movie9.setName("Saw X");
+        movie9.setDescription("A sick and desperate John travels to Mexico for a risky and experimental medical procedure in hopes of a miracle cure for his cancer only to discover the entire operation is a scam to defraud the most vulnerable.");
+        movie9.setGenre(genre3);
+        movie9.setRating(1);
         movieRepository.save(movie9);
 
         //genre4 movies
