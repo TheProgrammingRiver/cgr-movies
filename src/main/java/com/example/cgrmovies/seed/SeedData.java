@@ -138,22 +138,22 @@ public class SeedData implements CommandLineRunner {
 
         //genre4 movies
         Movie movie10 = new Movie();
-        movie10.setName("Movie 10");
-        movie10.setDescription("Movie 10 Description");
+        movie10.setName("The Terminator");
+        movie10.setDescription("A human soldier is sent from 2029 to 1984 to stop an almost indestructible cyborg killing machine, sent from the same year, which has been programmed to execute a young woman whose unborn son is the key to humanity's future salvation.");
         movie10.setGenre(genre4);
         movie10.setRating(2);
         movieRepository.save(movie10);
 
         Movie movie11 = new Movie();
-        movie11.setName("Movie 11");
-        movie11.setDescription("Movie 11 Description");
+        movie11.setName("The Matrix");
+        movie11.setDescription("When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the life he knows is the elaborate deception of an evil cyber-intelligence.");
         movie11.setGenre(genre4);
         movie11.setRating(2);
         movieRepository.save(movie11);
 
         Movie movie12 = new Movie();
-        movie12.setName("Movie 12");
-        movie12.setDescription("Movie 12 Description");
+        movie12.setName("Interstellar");
+        movie12.setDescription("When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team of researchers, to find a new planet for humans.");
         movie12.setGenre(genre4);
         movie12.setRating(1);
         movieRepository.save(movie12);
