@@ -114,13 +114,25 @@ implemented the genre and movie endpoints.
 | GET          | `/api/movies/`                         | Get all the movies                        | private   |
 | GET          | `/api/movies/byStatus/?status=WATCHED` | Get all the movies filtered by status     | private   |
 
+### Tools and Technologies
+- Java
+- Spring Boot
+- Spring Security
+- JSON Web Tokens
+- Cucumber
+- Rest Assured
+- H2 Database
+- Maven
+- Git Version Control
+- Git Projects
+- Postman
+
 ### Future Improvements
 - implement a user interface
 - add a user profile 
 - change relationship to many-to-many between genre and movies 
 
 ### Acknowledgments
-
 This project was created as a part of the Software Engineering Immersive program offered by General Assembly. It served 
 as a collaborative group project to practice our skills in Java, Object-Oriented Programming, Spring Boot, 
 Cucumber, and GitHub branch collaboration. 
