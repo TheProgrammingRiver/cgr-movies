@@ -42,7 +42,14 @@ public class MovieController {
         }
     }
 
-    
+    /**
+     * Retrieves all movies of a specific genre.
+     *
+     * @param  genreId  the ID of the genre
+     * @return          a ResponseEntity object with a list of movies belonging to the genre
+     *                   and a success message if the movies are retrieved successfully,
+     *                   otherwise a ResponseEntity object with a failure message
+     */
     @GetMapping(path = "/genres/{genreId}/movies/")
     public ResponseEntity<?> getAllGenreMovies(@PathVariable(value = "genreId") Long genreId){
         List<Movie> movieList = movieService.getAllGenreMovies(genreId);
