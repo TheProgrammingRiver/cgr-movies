@@ -25,7 +25,7 @@ public class MovieService {
         this.genreRepository = genreRepository;
         this.genreService = genreService;
     }
-    
+
     /**
      * Creates a genre movie.
      *
@@ -89,6 +89,11 @@ public class MovieService {
         return null;
     }
 
+    /**
+     * Retrieves all movies based on the user's genre preferences.
+     *
+     * @return  A list of movies that match the user's genre preferences.
+     */
     public List<Movie> getAllMovies(){
         List<Long> genreIdList = genreRepository.findIdsByUserId(genreService.getCurrentLoggedInUser().getId());
 
