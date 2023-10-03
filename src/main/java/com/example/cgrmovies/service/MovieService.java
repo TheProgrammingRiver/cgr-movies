@@ -25,6 +25,13 @@ public class MovieService {
         this.genreRepository = genreRepository;
         this.genreService = genreService;
     }
+    /**
+     * Creates a genre movie.
+     *
+     * @param  genreId   the ID of the genre
+     * @param  movie     the movie to be created
+     * @return           the created movie
+     */
     public Movie createGenreMovie(Long genreId, Movie movie){
         Optional<Genre> genre = genreRepository.findByIdAndUserId(genreId, genreService.getCurrentLoggedInUser().getId());
         log.info("Calling: create movie from Service, userId: " + genreService.getCurrentLoggedInUser().getId().toString());
