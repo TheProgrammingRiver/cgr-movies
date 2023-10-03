@@ -114,6 +114,10 @@ implemented the genre and movie endpoints.
 | GET          | `/api/movies/`                         | Get all the movies                        | private   |
 | GET          | `/api/movies/byStatus/?status=WATCHED` | Get all the movies filtered by status     | private   |
 
+### Future Improvements
+- implement a user interface
+- add a user profile 
+- change relationship to many-to-many between genre and movies 
 
 ### Acknowledgments
 
