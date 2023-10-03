@@ -134,6 +134,13 @@ public class MovieService {
         return null;
     }
 
+    /**
+     * Deletes a movie from a genre.
+     *
+     * @param  genreId   the ID of the genre
+     * @param  movieId   the ID of the movie
+     * @return           the deleted movie
+     */
     public Movie deleteGenreMovie(Long genreId, Long movieId){
         Genre genre = genreService.getGenreById(genreId);
         if (genre != null){
