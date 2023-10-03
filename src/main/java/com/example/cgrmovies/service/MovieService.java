@@ -110,6 +110,14 @@ public class MovieService {
         return null;
     }
 
+    /**
+     * Updates the genre of a movie.
+     *
+     * @param  genreId  the ID of the genre to update
+     * @param  movieId  the ID of the movie to update
+     * @param  movie    the updated movie object
+     * @return          the updated movie object
+     */
     public Movie updateGenreMovie( Long genreId, Long movieId, Movie movie){
         Genre genre = genreService.getGenreById(genreId);
         if (genre != null){
