@@ -17,11 +17,21 @@ public class GenreController {
     private GenreService genreService;
 
     static HashMap<String, Object> message = new HashMap<>();
+
+    /**
+     * Sets the genre service.
+     */
     @Autowired
     public void setGenreService(GenreService genreService) {
         this.genreService = genreService;
     }
 
+    /**
+     * Creates a new genre.
+     *
+     * @param  genre  the genre object to be created
+     * @return        a ResponseEntity containing a message and the newly created genre
+     */
     @PostMapping(path = "/genres/")
     public ResponseEntity<?> createGenre(@RequestBody Genre genre) {
         Genre newGenre = genreService.createGenre(genre);
@@ -35,6 +45,11 @@ public class GenreController {
         }
     }
 
+    /**
+     * Retrieves all genres from the API.
+     *
+     * @return  A ResponseEntity object containing the genre list and a message indicating success or failure.
+     */
     @GetMapping(path = "/genres/")
     public ResponseEntity<?> getAllGenres() {
         List<Genre> genreList = genreService.getAllGenres();
@@ -47,6 +62,4 @@ public class GenreController {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
     }
-
-
 }

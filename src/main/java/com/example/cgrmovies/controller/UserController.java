@@ -41,6 +41,11 @@ public class UserController {
         }
     }
 
+    /**
+     * Registers a new user.
+     * @param  user the user object to be registered
+     * @return the registered user
+     */
     @PostMapping(path = "/register/")
     public ResponseEntity<?> registerUser(@RequestBody User user) {
         User newUser = userService.register(user);
