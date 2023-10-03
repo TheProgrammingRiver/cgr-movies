@@ -1,6 +1,5 @@
 package com.example.cgrmovies.controller;
 
-import com.example.cgrmovies.model.Genre;
 import com.example.cgrmovies.model.Movie;
 import com.example.cgrmovies.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +9,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/api")
 public class MovieController {
-    private MovieService movieService;
+    private final MovieService movieService;
     static HashMap<String, Object> message = new HashMap<>();
 
     @Autowired
@@ -23,6 +21,14 @@ public class MovieController {
         this.movieService = movieService;
     }
 
+    /**
+     * Create a new movie for a specific genre.
+     *
+     * @param  genreId  the ID of the genre
+     * @param  movie    the movie object to be created
+     * @return          a ResponseEntity object with the created movie and a success message if the movie is created successfully,
+     *                  otherwise a ResponseEntity object with a failure message
+     */
     @PostMapping(path = "/genres/{genreId}/movies/")
     public ResponseEntity<?> createGenreMovie(@PathVariable(value = "genreId") Long genreId, @RequestBody Movie movie){
         Movie newMovie = movieService.createGenreMovie(genreId, movie);
@@ -34,9 +40,16 @@ public class MovieController {
             message.put("message", "Movie cannot be created");
             return new ResponseEntity<>(message, HttpStatus.CONFLICT);
         }
-
     }
 
+    /**
+     * Retrieves all movies of a specific genre.
+     *
+     * @param  genreId  the ID of the genre
+     * @return          a ResponseEntity object with a list of movies belonging to the genre
+     *                   and a success message if the movies are retrieved successfully,
+     *                   otherwise a ResponseEntity object with a failure message
+     */
     @GetMapping(path = "/genres/{genreId}/movies/")
     public ResponseEntity<?> getAllGenreMovies(@PathVariable(value = "genreId") Long genreId){
         List<Movie> movieList = movieService.getAllGenreMovies(genreId);
@@ -50,6 +63,76 @@ public class MovieController {
         }
     }
 
+    /**
+     * Retrieves a movie by its ID and genre ID.
+     *
+     * @param  genreId  the ID of the genre
+     * @param  movieId  the ID of the movie
+     * @return          a ResponseEntity containing the movie and a success message if the movie is found,
+     *                  otherwise a ResponseEntity with a not found message
+     */
+    @GetMapping(path = "/genres/{genreId}/movies/{movieId}/")
+    public ResponseEntity<?> getMovieByIdAndGenreId(@PathVariable(value = "genreId") Long genreId,
+                                                    @PathVariable(value = "movieId") Long movieId){
+        Movie movie = movieService.getMovieByIdAndGenreId(movieId, genreId);
+        if (movie != null){
+            message.put("message", "Movie with id " + movieId + " and genreId " + genreId + " retrieved");
+            message.put("data", movie);
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        } else {
+            message.put("message", "Movie with id " + movieId + " and genreId " + genreId + " cannot be retrieved");
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    /**
+     * Retrieves a list of movies based on the provided status.
+     *
+     * @param  status   the status of the movies
+     * @return          a ResponseEntity object containing the list of movies and a success message if the movies are retrieved,
+     *                  otherwise a ResponseEntity object with a failure message
+     */
+    @GetMapping(path = "/movies/byStatus/")
+    public ResponseEntity<?> getMoviesByStatus(@RequestParam String status){
+        List<Movie> movieList = movieService.getMoviesByStatus(Movie.MovieStatus.valueOf(status));
+        if (movieList != null){
+            message.put("message", "Movie list with " + status + " retrieved");
+            message.put("data", movieList);
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        } else {
+            message.put("message", "Movie list with " + status + " cannot be retrieved");
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    /**
+     * Retrieves all movies.
+     *
+     * @return         	Returns a ResponseEntity with the retrieved movies and an HttpStatus code.
+     *                  Otherwise, a ResponseEntity with a failure message
+     */
+    @GetMapping(path = "/movies/")
+    public ResponseEntity<?> getAllMovies(){
+        List<Movie> movieList = movieService.getAllMovies();
+        if (movieList != null){
+            message.put("message", "All Movies retrieved");
+            message.put("data", movieList);
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        } else {
+            message.put("message", "Movie list cannot be retrieved");
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    /**
+     * Updates a genre movie.
+     *
+     * @param  genreId   the ID of the genre
+     * @param  movieId   the ID of the movie
+     * @param  movie     the updated movie object
+     * @return           a ResponseEntity with a message and data if the movie was updated successfully,
+     *                   otherwise a ResponseEntity with a failure message
+     */
     @PutMapping(path = "/genres/{genreId}/movies/{movieId}/")
     public ResponseEntity<?> updateGenreMovie(@PathVariable(value = "genreId") Long genreId, @PathVariable(value = "movieId")
     Long movieId, @RequestBody Movie movie){
@@ -64,6 +147,14 @@ public class MovieController {
         }
     }
 
+    /**
+     * Delete a movie from a genre.
+     *
+     * @param  genreId   the ID of the genre
+     * @param  movieId   the ID of the movie
+     * @return           a ResponseEntity with a message and the deleted movie if successful,
+     *                   otherwise a ResponseEntity with an error message if the movie cannot be deleted
+     */
     @DeleteMapping(path = "/genres/{genreId}/movies/{movieId}/")
     public ResponseEntity<?> deleteGenreMovie(@PathVariable(value = "genreId")Long genreId, @PathVariable(value = "movieId")Long movieId){
         Movie deletedMovie = movieService.deleteGenreMovie(genreId, movieId);

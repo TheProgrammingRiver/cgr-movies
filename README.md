@@ -1,7 +1,19 @@
 # CGR-movies
 A Java-based web application designed for users to curate their movie consumption. The application provides a secure platform to access movie history privately.
 
-## USER-Stories
+### Approach
+
+In this project, our goal was to create a movie database system with secure access. To achieve this, we began by defining our user stories
+to guide the development process, such as enabling users to search for movies by genre and securing endpoints. To manage our tasks and collaborate
+as a team, we used [Github Projects](https://github.com/users/GabrielleYnara/projects/3), adopting an Agile project management approach.
+
+
+Collaborative development was at the core of our process, with frequent driver-navigator and occasional pair programming, to facilitate knowledge sharing
+and ensure unified coding standards. We began by defining our models, established security
+measures using Spring Security and JSON Web Tokens, adopted Behavior-Driven Development (BDD) testing with Cucumber and Rest Assured to validate endpoints, and finally
+implemented the genre and movie endpoints.
+
+### USER-Stories
 <details>
   <summary>User</summary>
 
@@ -87,18 +99,42 @@ A Java-based web application designed for users to curate their movie consumptio
 ### ERD
 ![ERD](https://github.com/GabrielleYnara/cgr-movies/blob/security/assets/cgr-movies.png)
 
-## API Endpoints
-| HTTP Methods | Endpoint URL                          | Functionality                             | Access    | 
-|--------------|---------------------------------------|-------------------------------------------|-----------|
-| POST         | `/api/users/register/`                | Register a new user                       | public    |
-| POST         | `/api/users/login/`                   | Login a registered user                   | public    |
-| POST         | `/api/genres/`                        | Create a genre                            | private   |
-| GET          | `/api/genres/`                        | Get all the genres                        | private   |
-| POST         | `/api/genres/1/movies`                | Create a movie by a genre ID              | private   |
-| GET          | `/api/genres/1/movies/`               | Get all the movies of a given genre       | private   |
-| GET          | `/api/genres/1/movies/1/`             | Get a movie by the ID and genre ID        | private   |
-| PUT          | `/api/genres/1/movies/1/`             | Edit a movie by the ID and genre ID       | private   |
-| DELETE       | `/api/genres/1/movies/1/`             | Delete a movie by the ID and genre ID     | private   |
-| GET          | `/api/movies/`                        | Get all the movies                        | private   |
-| GET          | `/api/genre/1/movies/status?watched`  | Get all the movies filtered by status     | private   |
+### API Endpoints
+| HTTP Methods | Endpoint URL                           | Functionality                             | Access    | 
+|--------------|----------------------------------------|-------------------------------------------|-----------|
+| POST         | `/api/users/register/`                 | Register a new user                       | public    |
+| POST         | `/api/users/login/`                    | Login a registered user                   | public    |
+| POST         | `/api/genres/`                         | Create a genre                            | private   |
+| GET          | `/api/genres/`                         | Get all the genres                        | private   |
+| POST         | `/api/genres/1/movies`                 | Create a movie by a genre ID              | private   |
+| GET          | `/api/genres/1/movies/`                | Get all the movies of a given genre       | private   |
+| GET          | `/api/genres/1/movies/1/`              | Get a movie by the ID and genre ID        | private   |
+| PUT          | `/api/genres/1/movies/1/`              | Edit a movie by the ID and genre ID       | private   |
+| DELETE       | `/api/genres/1/movies/1/`              | Delete a movie by the ID and genre ID     | private   |
+| GET          | `/api/movies/`                         | Get all the movies                        | private   |
+| GET          | `/api/movies/byStatus/?status=WATCHED` | Get all the movies filtered by status     | private   |
+
+### Tools and Technologies
+- Java
+- Spring Boot
+- Spring Security
+- JSON Web Tokens
+- Cucumber
+- Rest Assured
+- H2 Database
+- Maven
+- Git Version Control
+- Git Projects
+- Postman
+
+### Future Improvements
+- implement a user interface
+- add a user profile 
+- change relationship to many-to-many between genre and movies 
+
+### Acknowledgments
+This project was created as a part of the Software Engineering Immersive program offered by General Assembly. It served 
+as a collaborative group project to practice our skills in Java, Object-Oriented Programming, Spring Boot, 
+Cucumber, and GitHub branch collaboration. 
+
 
