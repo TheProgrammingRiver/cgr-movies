@@ -180,7 +180,6 @@ public class SeedData implements CommandLineRunner {
         movie15.setRating(1);
         movieRepository.save(movie15);
 
-
     }
 
 }

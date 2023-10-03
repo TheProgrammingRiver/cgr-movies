@@ -65,6 +65,7 @@ public class GenreService {
             return genreList;
         }
     }
+    
 
     /**
      * Retrieves a genre by its ID.
