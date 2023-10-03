@@ -62,6 +62,12 @@ public class GenreService {
         }
     }
 
+    /**
+     * Retrieves a genre by its ID.
+     *
+     * @param  genreId  the ID of the genre
+     * @return          the genre with the specified ID
+     */
     public Genre getGenreById(Long genreId){
         Optional<Genre> genre = genreRepository.findByIdAndUserId(genreId, getCurrentLoggedInUser().getId());
         if ( genre.isEmpty()){
