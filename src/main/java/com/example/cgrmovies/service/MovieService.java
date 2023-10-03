@@ -25,6 +25,7 @@ public class MovieService {
         this.genreRepository = genreRepository;
         this.genreService = genreService;
     }
+    
     /**
      * Creates a genre movie.
      *
@@ -48,6 +49,7 @@ public class MovieService {
             throw new InformationNotFoundException("Genre with id " + genreId + " not found");
         }
     }
+
     /**
      * Retrieves all movies of a specific genre.
      *
@@ -67,6 +69,13 @@ public class MovieService {
         return null;
     }
 
+    /**
+     * Retrieves a movie by its genre ID and movie ID.
+     *
+     * @param  genreId   the ID of the genre
+     * @param  movieId   the ID of the movie
+     * @return           the movie with the specified genre ID and movie ID, or null if not found
+     */
     public Movie getMovieByIdAndGenreId(Long genreId, Long movieId){
         Genre genre = genreService.getGenreById(genreId);
         if (genre != null) {
