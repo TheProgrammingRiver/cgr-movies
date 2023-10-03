@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/api")
 public class MovieController {
-    private MovieService movieService;
+    private final MovieService movieService;
     static HashMap<String, Object> message = new HashMap<>();
 
     @Autowired
@@ -44,6 +44,19 @@ public class MovieController {
             return new ResponseEntity<>(message, HttpStatus.OK);
         } else {
             message.put("message", "Movie list of genre with " + genreId + " cannot be retrieved");
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        }
+    }
+    @GetMapping(path = "/genres/{genreId}/movies/{movieId}/")
+    public ResponseEntity<?> getMovieByIdAndGenreId(@PathVariable(value = "genreId") Long genreId,
+                                                    @PathVariable(value = "movieId") Long movieId){
+        Movie movie = movieService.getMovieByIdAndGenreId(movieId, genreId);
+        if (movie != null){
+            message.put("message", "Movie with id " + movieId + " and genreId " + genreId + " retrieved");
+            message.put("data", movie);
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        } else {
+            message.put("message", "Movie with id " + movieId + " and genreId " + genreId + " cannot be retrieved");
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
     }

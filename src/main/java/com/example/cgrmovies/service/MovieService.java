@@ -55,6 +55,19 @@ public class MovieService {
         return null;
     }
 
+    public Movie getMovieByIdAndGenreId(Long genreId, Long movieId){
+        Genre genre = genreService.getGenreById(genreId);
+        if (genre != null) {
+            Optional<Movie> movie = movieRepository.findByIdAndGenreId(movieId, genreId);
+            if (movie.isEmpty()) {
+                throw new InformationNotFoundException("Movie with id " + movieId + " and genre with id " + genreId + " not found");
+            } else {
+                return movie.get();
+            }
+        }
+        return null;
+    }
+
     public Movie updateGenreMovie( Long genreId, Long movieId, Movie movie){
         Genre genre = genreService.getGenreById(genreId);
         if (genre != null){
@@ -65,7 +78,7 @@ public class MovieService {
                 existingMovie.get().setRating(movie.getRating());
                 return movieRepository.save(existingMovie.get());
             } else {
-                throw new InformationNotFoundException("Movie " + movie.getName() + " Not found");
+                throw new InformationNotFoundException("Movie " + movie.getName() + " not found");
             }
         }
         return null;
@@ -79,7 +92,7 @@ public class MovieService {
                 movieRepository.deleteById(movieId);
                 return existingMovie.get();
             } else {
-                throw new InformationNotFoundException("Movie " + movieId + " Not found");
+                throw new InformationNotFoundException("Movie " + movieId + " not found");
             }
         }
         return null;
