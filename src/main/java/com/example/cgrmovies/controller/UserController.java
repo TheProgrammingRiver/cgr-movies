@@ -1,6 +1,5 @@
 package com.example.cgrmovies.controller;
 
-import com.example.cgrmovies.model.Genre;
 import com.example.cgrmovies.model.User;
 import com.example.cgrmovies.model.request.LoginRequest;
 import com.example.cgrmovies.model.response.LoginResponse;
