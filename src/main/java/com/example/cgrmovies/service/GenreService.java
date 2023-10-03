@@ -48,6 +48,10 @@ public class GenreService {
 
     }
 
+    /**
+     * Retrieves all genres associated with the current logged in user.
+     * @return         	A list of genres.
+     */
     public List<Genre> getAllGenres(){
         List<Genre> genreList = genreRepository.findAllByUserId(getCurrentLoggedInUser().getId());
         if(genreList.isEmpty()){
