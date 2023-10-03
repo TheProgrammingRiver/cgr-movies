@@ -17,6 +17,10 @@ import java.util.Optional;
 public class GenreService {
 
     private GenreRepository genreRepository;
+
+    /**
+     * Sets the genre repository.
+     */
     @Autowired
     public void setGenreRepository(GenreRepository genreRepository) {
         this.genreRepository = genreRepository;
