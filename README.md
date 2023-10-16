@@ -137,5 +137,9 @@ implemented the genre and movie endpoints.
 This project was created as a part of the Software Engineering Immersive program offered by General Assembly.  
 It served as a collaborative group project to practice our skills in Java, Object-Oriented Programming, Spring Boot, 
 Cucumber, and GitHub branch collaboration. 
+#### Team Members
+Courtney Moreland: [LinkedIn]( https://www.linkedin.com/in/courtney-moreland/), [GitHub](https://github.com/courtneymcodes)  
+Gabrielle Ynara: [LinkedIn](https://www.linkedin.com/in/gabrielleynara/), [GitHub](https://github.com/GabrielleYnara)  
+River Dejesus: [LinkedIn](https://www.linkedin.com/in/river-dejesus/), [GitHub](https://github.com/TheProgrammingRiver)  
 
 
